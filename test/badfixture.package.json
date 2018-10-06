@@ -1,0 +1,19 @@
+{
+  "contributes": {
+    "configuration": {
+      "title": "",
+      "properties": {
+        "str": {
+          "default": "abc123",
+          "description": "string field",
+          "type": "string"
+        },
+        "num": {
+          "default": 12,
+          "description": "number field",
+          "type": "number"
+        }
+      }
+    }
+  }
+}

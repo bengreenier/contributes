@@ -1,0 +1,36 @@
+{
+  "properties": {
+    "configuration": {
+      "type": "object",
+      "patternProperties": {
+        "^title$": {
+          "type": "string",
+          "minLength": 1
+        },
+        "^properties$": {
+          "type": "object",
+          "minProperties": 1,
+          "patternProperties": {
+            "^.*$": {
+              "type": "object",
+              "patternProperties": {
+                "^description$": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "^type$": {
+                  "type": "string",
+                  "enum": ["string", "number", "object", "array", "boolean"]
+                }
+              },
+              "required": ["description", "type"]
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "required": ["title", "properties"]
+    }
+  },
+  "required": ["configuration"]
+}
