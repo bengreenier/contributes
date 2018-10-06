@@ -1,7 +1,7 @@
 {
-  "name": "contributes",
-  "version": "1.0.0",
-  "description": "overlayed contributes package.json parser",
+  "name": "@overlayed-app/contributes",
+  "version": "1.0.1",
+  "description": "parse JSONSchema contribution entries, and validate data against them",
   "main": "dist/index.js",
   "scripts": {
     "clean": "rimraf dist",

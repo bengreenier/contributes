@@ -1,7 +1,8 @@
-declare module 'contributes' {
-  import fs from 'fs'
-  import Ajv from 'ajv'
+import fs from 'fs'
+import Ajv from 'ajv'
 
+declare namespace contributes {
+  
   interface INodeData {
     /**
      * Settings description
@@ -60,7 +61,6 @@ declare module 'contributes' {
      */
     public validate (data?: any) : Contributes
   }
-
-  // the entrypoint
-  export default Contributes
 }
+
+export = contributes.Contributes

@@ -20,7 +20,7 @@ interface ISchema {
   properties: { [key: string]: INodeData }
 }
 
-export class Contributes {
+export default class Contributes {
   public static from (packagePath: string) {
     return new Contributes(packagePath)
   }
@@ -66,5 +66,3 @@ export class Contributes {
     return this
   }
 }
-
-export default Contributes
