@@ -17,6 +17,24 @@ describe('contributes', () => {
     expect(title).toBe('test settings')
   })
 
+  it('should expose name', () => {
+    // gets the name
+    const name = contributes
+      .from(`${__dirname}/fixture.package.json`)
+      .name
+
+    expect(name).toBe('test-fixture')
+  })
+
+  it('should expose version', () => {
+    // gets the version
+    const version = contributes
+      .from(`${__dirname}/fixture.package.json`)
+      .version
+
+    expect(version).toBe('1.1.1')
+  })
+
   it('should enumerate settings', () => {
     // enumerates all the settings
     const data = contributes
