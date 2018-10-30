@@ -37,6 +37,16 @@ declare namespace contributes {
     public static from (packagePath: string) : Contributes
 
     /**
+     * The package name from which settings are contributed
+     */
+    public name : string
+
+    /**
+     * The package version (semver) from which settings are contributed
+     */
+    public version : string
+
+    /**
      * The title for the contributed settings
      */
     public title : string

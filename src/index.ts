@@ -14,10 +14,21 @@ interface INodeSchema extends INodeData {
   name: string
 }
 
-interface ISchema {
+interface IPartialSchema {
   title: string,
-  type: string,
   properties: { [key: string]: INodeData }
+}
+
+interface ISchema extends IPartialSchema {
+  type: string,
+}
+
+interface IPkg {
+  name: string,
+  version: string,
+  contributes: {
+    configuration: IPartialSchema
+  }
 }
 
 export default class Contributes {
@@ -26,6 +37,7 @@ export default class Contributes {
   }
 
   private _ajv: Ajv.Ajv
+  private _pkg: IPkg
   private _schema: ISchema
   private _validator: Ajv.ValidateFunction
 
@@ -33,7 +45,10 @@ export default class Contributes {
     this._ajv = new Ajv({ allErrors: true, useDefaults: true, coerceTypes: true })
 
     const pkgSchemaValidator = this._ajv.compile(schema)
-    const pkgSchema = JSON.parse(fs.readFileSync(packagePath).toString()).contributes
+
+    this._pkg = JSON.parse(fs.readFileSync(packagePath).toString()) as IPkg
+
+    const pkgSchema = this._pkg.contributes
 
     // your contributes is no bueno
     if (!pkgSchemaValidator(pkgSchema)) {
@@ -42,6 +57,14 @@ export default class Contributes {
 
     this._schema = { ...pkgSchema.configuration, type: 'object' }
     this._validator = this._ajv.compile(this._schema)
+  }
+
+  public get name () {
+    return this._pkg.name
+  }
+
+  public get version () {
+    return this._pkg.version
   }
 
   public get title () {

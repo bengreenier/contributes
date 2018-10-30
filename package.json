@@ -1,6 +1,6 @@
 {
   "name": "@overlayed-app/contributes",
-  "version": "1.0.1",
+  "version": "1.2.0",
   "description": "parse JSONSchema contribution entries, and validate data against them",
   "main": "dist/index.js",
   "scripts": {
