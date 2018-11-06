@@ -1,6 +1,6 @@
 {
   "name": "@overlayed-app/contributes",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "parse JSONSchema contribution entries, and validate data against them",
   "main": "dist/index.js",
   "scripts": {
@@ -16,17 +16,17 @@
   "author": "Ben Greenier",
   "license": "MIT",
   "devDependencies": {
-    "@types/jest": "^23.3.3",
-    "@types/node": "^10.11.4",
+    "@types/jest": "^23.3.9",
+    "@types/node": "^10.12.2",
     "coveralls": "^3.0.2",
     "jest": "^23.6.0",
     "rimraf": "^2.6.2",
-    "ts-jest": "^23.10.3",
+    "ts-jest": "^23.10.4",
     "tslint": "^5.11.0",
     "tslint-config-standard": "^8.0.1",
-    "typescript": "^3.1.1"
+    "typescript": "^3.1.6"
   },
   "dependencies": {
-    "ajv": "^6.5.4"
+    "ajv": "^6.5.5"
   }
 }
