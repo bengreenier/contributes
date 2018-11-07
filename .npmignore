@@ -5,5 +5,5 @@ tslint.json
 .travis.yml
 
 coverage/
-src/
+src/**/*.t[s|sx]
 test/
