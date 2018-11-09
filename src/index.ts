@@ -50,13 +50,20 @@ export default class Contributes {
 
     const pkgSchema = this._pkg.contributes
 
-    // your contributes is no bueno
-    if (!pkgSchemaValidator(pkgSchema)) {
-      throw new Error(this._ajv.errorsText(pkgSchemaValidator.errors))
-    }
+    // if we don't have a schema, just mock out one (don't error)
+    if (!pkgSchema) {
+      this._schema = { type: 'object', properties: {} } as any
+      this._validator = () => { return true }
+    } else {
 
-    this._schema = { ...pkgSchema.configuration, type: 'object' }
-    this._validator = this._ajv.compile(this._schema)
+      // your contributes is no bueno
+      if (!pkgSchemaValidator(pkgSchema)) {
+        throw new Error(this._ajv.errorsText(pkgSchemaValidator.errors))
+      }
+
+      this._schema = { ...pkgSchema.configuration, type: 'object' }
+      this._validator = this._ajv.compile(this._schema)
+    }
   }
 
   public get name () {

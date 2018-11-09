@@ -124,4 +124,15 @@ describe('contributes', () => {
         .validate(newSettings)
     }).toThrow(/should be string/)
   })
+
+  it('should support no-contribute packages', () => {
+    const result = contributes
+      .from(`${__dirname}/nocontribfixture.package.json`)
+
+    expect(result.data).toEqual([])
+    expect(result.title).toBeUndefined()
+    expect(result.name).toBe('test-fixture')
+    expect(result.version).toBe('1.1.1')
+    expect(result.validate()).toBe(result)
+  })
 })

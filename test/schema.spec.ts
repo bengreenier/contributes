@@ -147,4 +147,10 @@ describe('schema', () => {
 
     expect(validate(data)).toBeFalsy()
   })
+
+  it('should not be valid with empty schema', () => {
+    let data = {}
+
+    expect(validate(data)).toBeFalsy()
+  })
 })
